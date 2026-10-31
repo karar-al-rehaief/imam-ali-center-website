@@ -1,0 +1,27 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1790880000000,
+      "tag": "0001_content",
+      "breakpoints": false
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1791504000000,
+      "tag": "0002_service_requests",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1791511769190,
+      "tag": "0003_hall_checkout",
+      "breakpoints": true
+    }
+  ]
+}

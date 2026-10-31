@@ -1,0 +1,234 @@
+{
+  "slides": [
+    {
+      "kicker": "A place to belong",
+      "title": "Community\nfirst.",
+      "description": "A welcoming home for faith, learning, and service in Northern Virginia.",
+      "primary": [
+        "Find a program",
+        "/#programs"
+      ],
+      "secondary": [
+        "Get to know IAC",
+        "/about/"
+      ],
+      "image": "/assets/fb-community-portrait.jpg",
+      "position": "center 60%",
+      "mobilePosition": "center 60%",
+      "alt": "The IAC community gathered for a celebration",
+      "portrait": false,
+      "source": "https://www.facebook.com/photo/?fbid=7828989470459847"
+    },
+    {
+      "kicker": "Gather in remembrance",
+      "title": "Faith in\ncommunity.",
+      "description": "Come together for prayer, supplication, celebration, and care for one another.",
+      "primary": [
+        "See the weekly schedule",
+        "/#programs"
+      ],
+      "secondary": [
+        "Plan your visit",
+        "/#contact"
+      ],
+      "image": "/assets/fb-community-celebration.jpg",
+      "position": "center 78%",
+      "mobilePosition": "center 78%",
+      "alt": "Families and community members attending an IAC program",
+      "portrait": false,
+      "source": "https://www.facebook.com/photo/?fbid=7828987857126675"
+    },
+    {
+      "kicker": "Learning for every age",
+      "title": "Grow in\nknowledge.",
+      "description": "Explore classes, youth activities, and opportunities to learn at every stage of life.",
+      "primary": [
+        "Explore education",
+        "/#education"
+      ],
+      "secondary": [
+        "Meet our community",
+        "/staff/"
+      ],
+      "image": "/assets/fb-family-celebration.jpg",
+      "position": "center 78%",
+      "mobilePosition": "center 78%",
+      "alt": "Families celebrating together at Imam Ali Center",
+      "portrait": false,
+      "source": "https://www.facebook.com/photo/?fbid=7702972973061498"
+    },
+    {
+      "kicker": "A place to belong",
+      "title": "Community\nfirst.",
+      "description": "A welcoming home for faith, learning, and service in Northern Virginia.",
+      "primary": [
+        "Find a program",
+        "/#programs"
+      ],
+      "secondary": [
+        "Get to know IAC",
+        "/about/"
+      ],
+      "image": "/assets/fb-community-tables.jpg",
+      "position": "center 78%",
+      "mobilePosition": "center 78%",
+      "alt": "Community members gathered around tables at IAC",
+      "portrait": false,
+      "source": "https://www.facebook.com/photo/?fbid=7702971909728271"
+    },
+    {
+      "kicker": "Gather in remembrance",
+      "title": "Faith in\ncommunity.",
+      "description": "Come together for prayer, supplication, celebration, and care for one another.",
+      "primary": [
+        "See the weekly schedule",
+        "/#programs"
+      ],
+      "secondary": [
+        "Plan your visit",
+        "/#contact"
+      ],
+      "image": "/assets/fb-community-program.jpg",
+      "position": "center 78%",
+      "mobilePosition": "center 78%",
+      "alt": "A full community gathering at Imam Ali Center",
+      "portrait": false,
+      "source": "https://www.facebook.com/photo/?fbid=7702971269728335"
+    },
+    {
+      "kicker": "Learning for every age",
+      "title": "Grow in\nknowledge.",
+      "description": "Explore classes, youth activities, and opportunities to learn at every stage of life.",
+      "primary": [
+        "Explore education",
+        "/#education"
+      ],
+      "secondary": [
+        "Meet our community",
+        "/staff/"
+      ],
+      "image": "/assets/fb-eid-congregation.jpg",
+      "position": "center 78%",
+      "mobilePosition": "center 78%",
+      "alt": "The IAC congregation gathered for Eid Takbeeraat",
+      "portrait": false,
+      "source": "https://www.facebook.com/photo/?fbid=3337634279595411"
+    },
+    {
+      "kicker": "A place to belong",
+      "title": "Community\nfirst.",
+      "description": "A welcoming home for faith, learning, and service in Northern Virginia.",
+      "primary": [
+        "Find a program",
+        "/#programs"
+      ],
+      "secondary": [
+        "Get to know IAC",
+        "/about/"
+      ],
+      "image": "/assets/fb-eid-families.jpg",
+      "position": "center 78%",
+      "mobilePosition": "center 78%",
+      "alt": "Families gathering for Eid at Imam Ali Center",
+      "portrait": false,
+      "source": "https://www.facebook.com/photo/?fbid=3337635346261971"
+    },
+    {
+      "kicker": "Gather in remembrance",
+      "title": "Faith in\ncommunity.",
+      "description": "Come together for prayer, supplication, celebration, and care for one another.",
+      "primary": [
+        "See the weekly schedule",
+        "/#programs"
+      ],
+      "secondary": [
+        "Plan your visit",
+        "/#contact"
+      ],
+      "image": "/assets/fb-eid-community.jpg",
+      "position": "center 78%",
+      "mobilePosition": "center 78%",
+      "alt": "Children and families together at the IAC Eid gathering",
+      "portrait": false,
+      "source": "https://www.facebook.com/photo/?fbid=3337635382928634"
+    },
+    {
+      "kicker": "Learning for every age",
+      "title": "Grow in\nknowledge.",
+      "description": "Explore classes, youth activities, and opportunities to learn at every stage of life.",
+      "primary": [
+        "Explore education",
+        "/#education"
+      ],
+      "secondary": [
+        "Meet our community",
+        "/staff/"
+      ],
+      "image": "/assets/fb-eid-prayer.jpg",
+      "position": "center 78%",
+      "mobilePosition": "center 78%",
+      "alt": "The community preparing for Eid prayer at IAC",
+      "portrait": false,
+      "source": "https://www.facebook.com/photo/?fbid=3337635682928604"
+    },
+    {
+      "kicker": "A place to belong",
+      "title": "Community\nfirst.",
+      "description": "A welcoming home for faith, learning, and service in Northern Virginia.",
+      "primary": [
+        "Find a program",
+        "/#programs"
+      ],
+      "secondary": [
+        "Get to know IAC",
+        "/about/"
+      ],
+      "image": "/assets/fb-eid-standing.jpg",
+      "position": "center 78%",
+      "mobilePosition": "center 78%",
+      "alt": "Families standing together in Eid prayer at Imam Ali Center",
+      "portrait": false,
+      "source": "https://www.facebook.com/photo/?fbid=3337633739595465"
+    }
+  ],
+  "education": [
+    {
+      "image": "/assets/guide-academy-banner.jpg",
+      "alt": "Guide Academy students and teacher together"
+    },
+    {
+      "image": "/assets/iac-school-students.png",
+      "alt": "IAC Saturday School students gathered for a school celebration"
+    },
+    {
+      "image": "/assets/imam-sadiq-seminary.png",
+      "alt": "Scholars gathered for religious study, supplied Imam Sadiq Seminary photograph"
+    },
+    {
+      "image": "/assets/iac-quran-circle.jpg",
+      "alt": "IAC students studying together in a learning circle"
+    },
+    {
+      "image": "/assets/iac-youth-discussion.jpg",
+      "alt": "IAC community members taking part in a youth discussion session"
+    }
+  ],
+  "shorts": [
+    "x-co99Vj_UM",
+    "1wY5CqqUIGI",
+    "80O_4Qu7654",
+    "oNcQLqPF8YU",
+    "CGKjZriJ6TU",
+    "ubd6bAabFo0",
+    "p1zi8KkY3KA"
+  ],
+  "bookings": {
+    "mustafa": "",
+    "baghernejad": "",
+    "medical": "",
+    "mental-health": "",
+    "real-estate": "",
+    "legal": "",
+    "tax-finance": ""
+  }
+}

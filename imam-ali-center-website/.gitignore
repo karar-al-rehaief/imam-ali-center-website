@@ -1,0 +1,5 @@
+work/
+.local/
+dist/server/
+node_modules/
+.env*

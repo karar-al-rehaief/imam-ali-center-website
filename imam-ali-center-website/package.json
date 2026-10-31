@@ -1,0 +1,1 @@
+{"name":"imam-ali-center-website","private":true,"type":"module","scripts":{"build":"node scripts/build-pages.mjs && node scripts/build-worker.mjs","dev":"node scripts/preview.mjs"},"devDependencies":{"drizzle-kit":"^0.31.4","drizzle-orm":"^0.44.6"}}

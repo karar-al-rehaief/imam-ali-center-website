@@ -1,0 +1,14 @@
+**/node_modules/
+**/.wrangler/
+**/.local/
+**/.cloudflare-local/
+**/.env
+**/.env.*
+**/.dev.vars*
+**/.DS_Store
+**/work/
+**/dist/server/
+**/.openai/
+imam-ali-center-cloudflare/public/
+imam-ali-center-cloudflare/src/generated/
+*.log

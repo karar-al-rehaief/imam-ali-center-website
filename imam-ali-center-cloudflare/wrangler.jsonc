@@ -1,0 +1,50 @@
+{
+  "$schema": "https://unpkg.com/wrangler/config-schema.json",
+  "name": "imam-ali-center",
+  "account_id": "38ccd4b7bf4cfa09c583bdcbfa347577",
+  "main": "src/index.mjs",
+  "compatibility_date": "2026-10-18",
+  "workers_dev": true,
+  "preview_urls": false,
+  "routes": [
+    { "pattern": "imamalicenter.org", "custom_domain": true },
+    { "pattern": "www.imamalicenter.org", "custom_domain": true }
+  ],
+  "vars": {
+    "CF_ACCESS_TEAM_DOMAIN": "https://restless-cake-643c.cloudflareaccess.com",
+    "CF_ACCESS_AUD": "b7fb00aca130530c684348346402120efe6a630dae332c9671c86624f764af80"
+  },
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+    "run_worker_first": [
+      "/api/*",
+      "/admin",
+      "/admin/*",
+      "/uploads/*",
+      "/service-request",
+      "/service-request/*",
+      "/aim",
+      "/aim/*",
+      "/aime",
+      "/aime/*"
+    ]
+  },
+  "observability": {
+    "enabled": false
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "iac-website",
+      "database_id": "4d94aa3d-f1ea-44f0-b3e3-4a13f3eb9eba",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "BUCKET",
+      "bucket_name": "iac-website-uploads"
+    }
+  ]
+}

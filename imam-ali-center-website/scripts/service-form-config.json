@@ -1,0 +1,424 @@
+{
+  "marriage": {
+    "topics": [
+      "Nikah ceremony",
+      "Pre-marital counseling",
+      "Marriage documentation",
+      "Other"
+    ],
+    "detailTopics": [
+      "Nikah ceremony",
+      "Marriage documentation"
+    ],
+    "questions": [
+      {
+        "name": "brideName",
+        "label": "Bride’s first and last name",
+        "required": true,
+        "section": "Bride & groom"
+      },
+      {
+        "name": "brideEmail",
+        "label": "Bride’s email",
+        "type": "email",
+        "required": true
+      },
+      {
+        "name": "bridePhone",
+        "label": "Bride’s phone number",
+        "type": "tel",
+        "required": true
+      },
+      {
+        "name": "groomName",
+        "label": "Groom’s first and last name",
+        "required": true
+      },
+      {
+        "name": "groomEmail",
+        "label": "Groom’s email",
+        "type": "email",
+        "required": true
+      },
+      {
+        "name": "groomPhone",
+        "label": "Groom’s phone number",
+        "type": "tel",
+        "required": true
+      },
+      {
+        "name": "fatherName",
+        "label": "Bride’s father’s first and last name",
+        "section": "Family & marriage history"
+      },
+      {
+        "name": "fatherEmail",
+        "label": "Bride’s father’s email",
+        "type": "email"
+      },
+      {
+        "name": "bridePreviouslyMarried",
+        "label": "Has the bride been previously married?",
+        "type": "select",
+        "options": [
+          "Yes",
+          "No"
+        ],
+        "required": true
+      },
+      {
+        "name": "groomPreviouslyMarried",
+        "label": "Has the groom been previously married?",
+        "type": "select",
+        "options": [
+          "Yes",
+          "No"
+        ],
+        "required": true
+      },
+      {
+        "name": "bothMuslim",
+        "label": "Are both bride and groom Muslim?",
+        "type": "select",
+        "options": [
+          "Yes",
+          "No",
+          "I would like to discuss this with IAC"
+        ],
+        "required": true
+      },
+      {
+        "name": "legalMarriageStatus",
+        "label": "Do you have legal marriage documentation?",
+        "type": "select",
+        "options": [
+          "Yes, attached below",
+          "Yes, I will provide it directly",
+          "Not yet",
+          "I need guidance"
+        ],
+        "required": true,
+        "section": "Documentation"
+      },
+      {
+        "name": "legalMarriage",
+        "label": "Legal marriage documentation",
+        "type": "file"
+      },
+      {
+        "name": "brideId",
+        "label": "Bride’s identification documents",
+        "type": "file",
+        "help": "Upload the identification you would like IAC to review. Additional national identification, if applicable, can be included."
+      },
+      {
+        "name": "groomId",
+        "label": "Groom’s identification documents",
+        "type": "file"
+      },
+      {
+        "name": "islamicDivorce",
+        "label": "Proof of Islamic divorce, if either party was previously divorced",
+        "type": "file"
+      },
+      {
+        "name": "legalDivorce",
+        "label": "Proof of legal divorce, if either party was previously divorced",
+        "type": "file"
+      },
+      {
+        "name": "witness1Name",
+        "label": "Witness 1 — first and last name",
+        "section": "Witnesses",
+        "help": "Leave blank if you need help arranging witnesses; IAC will confirm what is needed."
+      },
+      {
+        "name": "witness1Email",
+        "label": "Witness 1 email",
+        "type": "email"
+      },
+      {
+        "name": "witness2Name",
+        "label": "Witness 2 — first and last name"
+      },
+      {
+        "name": "witness2Email",
+        "label": "Witness 2 email",
+        "type": "email"
+      },
+      {
+        "name": "marriageConditions",
+        "label": "Are there any marriage conditions you would like to discuss with IAC?",
+        "type": "textarea",
+        "section": "Ceremony & certificate",
+        "max": 2000,
+        "help": "You may ask about conditions concerning travel, major family decisions, an additional marriage, representation in divorce, or education and employment. IAC will discuss the wording with both parties."
+      },
+      {
+        "name": "certificateDiscussion",
+        "label": "Would both bride and groom like to review the certificate and any proposed conditions with IAC?",
+        "type": "select",
+        "options": [
+          "Yes",
+          "No",
+          "We need more information"
+        ]
+      }
+    ]
+  },
+  "divorce": {
+    "topics": [
+      "Counseling & mediation",
+      "Religious divorce guidance",
+      "Certificate inquiry",
+      "Other"
+    ],
+    "detailTopics": [
+      "Religious divorce guidance",
+      "Certificate inquiry"
+    ],
+    "questions": [
+      {
+        "name": "wifeName",
+        "label": "Wife’s first and last name",
+        "required": true,
+        "section": "Husband & wife"
+      },
+      {
+        "name": "wifeEmail",
+        "label": "Wife’s email",
+        "type": "email",
+        "required": true
+      },
+      {
+        "name": "husbandName",
+        "label": "Husband’s first and last name",
+        "required": true
+      },
+      {
+        "name": "husbandEmail",
+        "label": "Husband’s email",
+        "type": "email",
+        "required": true
+      },
+      {
+        "name": "legalDivorceStatus",
+        "label": "Do you have legal divorce documentation?",
+        "type": "select",
+        "options": [
+          "Yes, attached below",
+          "Yes, I will provide it directly",
+          "Still in process",
+          "I need guidance"
+        ],
+        "required": true,
+        "section": "Documentation"
+      },
+      {
+        "name": "legalDivorce",
+        "label": "Legal divorce proof",
+        "type": "file"
+      },
+      {
+        "name": "islamicMarriage",
+        "label": "Islamic marriage certificate (proof of Nikah)",
+        "type": "file"
+      },
+      {
+        "name": "missingCertificateReason",
+        "label": "If you do not have an Islamic marriage certificate, please explain why",
+        "type": "textarea",
+        "max": 1500
+      },
+      {
+        "name": "wifeId",
+        "label": "Wife’s identification documents",
+        "type": "file"
+      },
+      {
+        "name": "husbandId",
+        "label": "Husband’s identification documents",
+        "type": "file"
+      },
+      {
+        "name": "mahriyahAgreement",
+        "label": "Mutual agreement regarding Mahriyah (Mahr)",
+        "type": "file",
+        "help": "If available, attach a document signed by both parties recording payment or their mutual decision about Mahr."
+      },
+      {
+        "name": "mahriyahDetails",
+        "label": "Is there anything about the Mahr agreement you would like to discuss?",
+        "type": "textarea",
+        "max": 1500
+      },
+      {
+        "name": "witness1Name",
+        "label": "Witness 1 — first and last name",
+        "section": "Witnesses & certificate",
+        "help": "Leave blank if you need help arranging witnesses; IAC will confirm what is needed."
+      },
+      {
+        "name": "witness1Email",
+        "label": "Witness 1 email",
+        "type": "email"
+      },
+      {
+        "name": "witness2Name",
+        "label": "Witness 2 — first and last name"
+      },
+      {
+        "name": "witness2Email",
+        "label": "Witness 2 email",
+        "type": "email"
+      },
+      {
+        "name": "embassyDocumentation",
+        "label": "Do you need documentation for an embassy?",
+        "type": "select",
+        "options": [
+          "Yes",
+          "No",
+          "Not sure"
+        ],
+        "required": true
+      }
+    ]
+  },
+  "rent-a-hall": {
+    "topics": [
+      "Ghadeer Hall (Main)",
+      "Small Hall",
+      "Not sure yet"
+    ],
+    "questions": [
+      {
+        "name": "eventCategory",
+        "label": "What are you reserving the hall for?",
+        "type": "select",
+        "options": [
+          "IAC program or community group",
+          "Majlis or Milad (religious gathering)",
+          "Private event"
+        ],
+        "required": true,
+        "section": "Your event"
+      },
+      {
+        "name": "eventTitle",
+        "label": "Purpose or title of the event",
+        "required": true
+      },
+      {
+        "name": "eventFirstDay",
+        "label": "First day of the event",
+        "type": "date",
+        "required": true
+      },
+      {
+        "name": "eventLastDay",
+        "label": "Last day of the event",
+        "type": "date",
+        "required": true
+      },
+      {
+        "name": "eventStartTime",
+        "label": "Event start time",
+        "type": "time",
+        "required": true
+      },
+      {
+        "name": "eventEndTime",
+        "label": "Event end time",
+        "type": "time",
+        "required": true
+      },
+      {
+        "name": "attendees",
+        "label": "Estimated number of attendees",
+        "type": "number",
+        "min": 1,
+        "maxValue": 200,
+        "required": true
+      },
+      {
+        "name": "attendanceGroup",
+        "label": "Are brothers, sisters, or both expected to attend?",
+        "type": "select",
+        "options": [
+          "Brothers only",
+          "Sisters only",
+          "Brothers and sisters"
+        ],
+        "required": true
+      },
+      {
+        "name": "kitchenNeeded",
+        "label": "Do you need the kitchen or kitchen services?",
+        "type": "select",
+        "options": [
+          "Yes",
+          "No",
+          "Not sure"
+        ],
+        "required": true,
+        "section": "Facilities"
+      },
+      {
+        "name": "kitchenUse",
+        "label": "What would the kitchen be used for?",
+        "type": "select",
+        "options": [
+          "Refrigeration, storage, or serving catered food",
+          "Cooking — please discuss availability with IAC",
+          "Tea, coffee, or drinks",
+          "Water dispenser",
+          "Other"
+        ],
+        "showIf": {
+          "field": "kitchenNeeded",
+          "value": "Yes"
+        }
+      },
+      {
+        "name": "equipmentRequests",
+        "label": "Equipment or setup requests (optional)",
+        "type": "textarea",
+        "max": 1000
+      }
+    ]
+  },
+  "funeral": {
+    "topics": [
+      "Funeral arrangements",
+      "Memorial & Fatiha gathering",
+      "Bereavement support",
+      "Other"
+    ],
+    "questions": []
+  },
+  "consultation": {
+    "topics": [
+      "Religious & family guidance",
+      "Medical guidance",
+      "Mental health & wellbeing",
+      "Real estate",
+      "Legal guidance",
+      "Tax & financial guidance",
+      "Other"
+    ],
+    "questions": []
+  },
+  "membership": {
+    "topics": [
+      "Joining",
+      "Renewal",
+      "Membership question"
+    ],
+    "questions": []
+  },
+  "religious-question": {
+    "topics": [],
+    "questions": []
+  }
+}

@@ -1,0 +1,51 @@
+(async()=>{
+ const form=document.querySelector('[data-hall-rental]');if(!form)return;
+ const review=document.querySelector('[data-hall-review]'),success=document.querySelector('[data-hall-success]'),feedback=document.querySelector('[data-rental-feedback]');
+ const pick=s=>document.querySelector(s), money=cents=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD'}).format(cents/100);
+ const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
+ const steps=Array.from(document.querySelectorAll('.rental-steps li'));let config=null,details=null,items=[],challenge=null,card=null,session=null,busy=false,formId=crypto.randomUUID(),secret=crypto.randomUUID()+crypto.randomUUID();
+ const storageKey='iac-hall-payment';
+ function step(n){steps.forEach((s,i)=>{s.removeAttribute('aria-current');s.classList.toggle('is-complete',i<n);if(i===n)s.setAttribute('aria-current','step');});}
+ async function api(path,data){const response=await fetch(path,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(data)});const result=await response.json();if(!response.ok)throw Error(result.error||'Please try again or call IAC.');return result;}
+ function showFields(){document.querySelectorAll('[data-hall-conditional]').forEach(label=>{const shown=form.elements.namedItem(label.dataset.hallConditional)?.value===label.dataset.showValue;label.hidden=!shown;label.querySelectorAll('input,select,textarea').forEach(input=>input.disabled=!shown);});const hall=Object.values(config?.halls||{}).find(h=>h.name===form.elements.topic.value);pick('[data-hall-preview-name]').textContent=hall?.name||'Choose your hall';pick('[data-hall-preview-price]').textContent=hall?money(hall.amount):'';pick('[data-hall-preview-capacity]').textContent=hall?`${hall.capacity} chair spaces`:'';form.elements.attendees.max=hall?.capacity||200;}
+ form.addEventListener('change',showFields);showFields();
+ async function refreshCaptcha(){challenge=null;const status=pick('[data-rental-captcha-status]');status.textContent='Loading verification…';try{const r=await fetch('/api/captcha');const d=await r.json();if(!r.ok)throw Error(d.error);challenge=d.id;pick('.rental-captcha img').src=d.image;pick('[name="rental-captcha"]').value='';status.textContent='Codes expire after five minutes.';}catch(e){status.textContent=e.message;}}
+ pick('[data-rental-refresh]').addEventListener('click',refreshCaptcha);
+ function summary(){const names={topic:'Hall',name:'Full name',email:'Email',phone:'Phone',eventCategory:'Event type',eventTitle:'Event',eventFirstDay:'First day',eventLastDay:'Last day',eventStartTime:'Starts',eventEndTime:'Ends',attendees:'Guests',attendanceGroup:'Attendance',kitchenNeeded:'Kitchen requested',kitchenUse:'Kitchen use',equipmentRequests:'Equipment',message:'Notes'};pick('[data-rental-summary]').innerHTML=Object.entries(details).filter(([k,v])=>names[k]&&v).map(([k,v])=>`<div><dt>${names[k]}</dt><dd>${esc(v)}</dd></div>`).join('')+items.map(item=>`<div class="rental-line-item"><dt>${esc(item.name)}</dt><dd>${money(item.amount)}</dd></div>`).join('');pick('[data-rental-total]').textContent=money(items.reduce((n,x)=>n+x.amount,0));}
+ async function initializeCard(){
+  if(!config?.connected){pick('[data-square-status]').textContent='Online payment is not connected yet. Send a rental request below; IAC will follow up about availability and payment.';return;}
+  pick('[data-square-status]').textContent=config.mode==='sandbox'?'Sandbox preview — test cards only. No real payment is collected.':'Pay on this website, securely through Square.';
+  pick('[data-square-payment]').hidden=false;
+  if(card)return;
+  try{if(!window.Square)await new Promise((resolve,reject)=>{const script=document.createElement('script');script.src=config.mode==='sandbox'?'https://sandbox.web.squarecdn.com/v1/square.js':'https://web.squarecdn.com/v1/square.js';script.onload=resolve;script.onerror=()=>reject(Error('The secure card form could not load. Send a rental request or call IAC.'));document.head.append(script);});card=await window.Square.payments(config.appId,config.locationId).card();await card.attach('#square-card-container');pick('[data-pay-rental]').disabled=false;}catch(e){pick('[data-square-status]').textContent=e.message;}
+ }
+ async function openReview(){form.hidden=true;review.hidden=false;success.hidden=true;step(1);summary();review.focus({preventScroll:true});review.scrollIntoView({behavior:"smooth",block:"start"});if(!session)await refreshCaptcha();await initializeCard();}
+ form.addEventListener('submit',event=>{event.preventDefault();if(!config){form.querySelector('.form-feedback').textContent='Payment information is still loading. Please try again.';return;}
+  const values=new FormData(form);details=Object.fromEntries([...values].filter(([k])=>!['extra','consent'].includes(k)));
+  if(details.eventLastDay<details.eventFirstDay||details.eventLastDay===details.eventFirstDay&&details.eventEndTime<=details.eventStartTime){form.querySelector('.form-feedback').textContent='The event must end after it starts.';return;}
+  const hall=Object.values(config.halls).find(h=>h.name===details.topic);items=[hall,...values.getAll('extra').map(k=>config.extras[k])];openReview();
+ });
+ pick('[data-edit-rental]').addEventListener('click',()=>{if(session)return;form.hidden=false;review.hidden=true;step(0);form.elements.topic.focus();});
+ function finish(data){review.hidden=true;form.hidden=true;success.hidden=false;step(2);pick('[data-rental-success-kicker]').textContent=data.paid?(data.mode==='sandbox'?'SANDBOX PAYMENT':'PAYMENT RECEIVED'):'REQUEST RECEIVED';pick('[data-rental-success-title]').textContent=data.paid?'Thank you for your payment.':'Your rental request is received.';pick('[data-rental-success-text]').textContent=data.paid?`${data.mode==='sandbox'?'Test payment':'Payment'} of ${money(data.amount)} completed through Square. ${data.delivery==='pending'?'IAC’s notification is pending; keep this reference and contact the Center.':'IAC will follow up about your rental arrangements.'} Payment does not independently confirm a booking.`:data.delivery==='email'?'Your rental request has been emailed to IAC. No payment was collected. IAC will follow up about availability and arrangements.':'Your rental request is in IAC’s admin inbox. No payment was collected. IAC will follow up about availability and arrangements.';pick('[data-rental-reference]').textContent=`Reference: ${data.reference}`;const receipt=pick('[data-square-receipt]');if(data.receipt){receipt.href=data.receipt;receipt.hidden=false;}try{sessionStorage.removeItem(storageKey);}catch{}success.focus({preventScroll:true});success.scrollIntoView({behavior:"smooth",block:"start"});}
+ async function createRequest(checkout){
+  if(!challenge)throw Error('Request a new verification image and enter the code.');
+  const payload={id:formId,service:'rent-a-hall',fields:details,consent:true,captchaId:challenge,captchaAnswer:pick('[name="rental-captcha"]').value,extras:new FormData(form).getAll('extra'),...(checkout?{checkout:true,checkoutSecret:secret,availabilityConfirmed:pick('[data-availability-confirmed]').checked,extras:new FormData(form).getAll('extra')}:{})};
+  return api('/api/service-requests',payload);
+ }
+ pick('[data-request-rental]').addEventListener('click',async()=>{if(busy||session)return;busy=true;feedback.textContent='Sending your rental request…';try{finish(await createRequest(false));}catch(e){feedback.textContent=e.message;await refreshCaptcha();}finally{busy=false;}});
+ pick('[data-pay-rental]').addEventListener('click',async()=>{
+  if(busy||!card)return;if(!pick('[data-availability-confirmed]').checked){feedback.textContent='Confirm your date and services with IAC before paying.';return;}
+  busy=true;const button=pick('[data-pay-rental]');button.disabled=true;pick('[data-request-rental]').disabled=true;feedback.textContent='Processing securely through Square…';
+  try{
+   if(!session){session=await createRequest(true);try{sessionStorage.setItem(storageKey,JSON.stringify({id:session.id,secret}));}catch{}pick('[data-edit-rental]').hidden=true;pick('.rental-captcha').hidden=true;pick('[data-request-rental]').hidden=true;}
+   const names=details.name.trim().split(/\s+/),result=await card.tokenize({amount:(session.amount/100).toFixed(2),currencyCode:'USD',intent:'CHARGE',customerInitiated:true,sellerKeyedIn:false,billingContact:{givenName:names.shift(),familyName:names.join(' '),email:details.email,phone:details.phone,countryCode:'US'}});
+   if(result.status!=='OK')throw Error(result.errors?.map(e=>e.message).join(' ')||'Check your card details and try again.');
+   finish(await api('/api/hall-checkout/pay',{id:session.id,secret,sourceId:result.token}));
+  }catch(e){feedback.textContent=e.message;if(!session)await refreshCaptcha();else feedback.textContent+=' Retry here to check the same payment; please do not start a second booking.';}
+  finally{busy=false;button.disabled=false;pick('[data-request-rental]').disabled=false;}
+ });
+ try{const response=await fetch('/api/hall-checkout/config');if(!response.ok)throw Error();config=await response.json();const selected=new URLSearchParams(location.search).get('hall');if(config.halls[selected])form.elements.topic.value=config.halls[selected].name;showFields();
+  let saved;try{saved=JSON.parse(sessionStorage.getItem(storageKey)||'null');}catch{}
+  if(saved?.id&&saved.secret){try{const result=await api('/api/hall-checkout/status',saved);if(result.paid)finish(result);else{session=result;secret=saved.secret;formId=saved.id;details=result.fields;items=result.items;Object.entries(details).forEach(([k,v])=>{if(form.elements.namedItem(k))form.elements.namedItem(k).value=v;});pick('[data-edit-rental]').hidden=true;pick('.rental-captcha').hidden=true;pick('[data-request-rental]').hidden=true;pick('[data-availability-confirmed]').checked=true;await openReview();}}catch(e){form.querySelector('.form-feedback').textContent=e.message+' If you attempted payment, contact IAC before starting again.';form.querySelector('[type="submit"]').disabled=true;}}
+ }catch{form.querySelector('.form-feedback').textContent='Rental information could not load. Refresh the page or call IAC.';form.querySelector('[type="submit"]').disabled=true;}
+})();

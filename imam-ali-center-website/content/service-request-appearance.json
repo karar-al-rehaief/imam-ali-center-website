@@ -1,0 +1,58 @@
+{
+  "default": {
+    "heading": "How can we help you?",
+    "eyebrow": "IAC SERVICES",
+    "lead": "Send your request directly to the Center.",
+    "image": "/assets/fb-quran-guidance.jpg",
+    "position": "center 70%"
+  },
+  "marriage": {
+    "heading": "Marriage & Nikah request",
+    "eyebrow": "MARRIAGE & NIKAH",
+    "lead": "Tell us about your ceremony, documentation, or marriage service needs.",
+    "image": "/assets/fb-service-celebration-flowers.webp",
+    "position": "center 65%"
+  },
+  "divorce": {
+    "heading": "Divorce guidance request",
+    "eyebrow": "CONFIDENTIAL GUIDANCE",
+    "lead": "Request private assistance with religious divorce, mediation, or documentation.",
+    "image": "/assets/fb-quran-guidance.jpg",
+    "position": "center 75%"
+  },
+  "funeral": {
+    "heading": "Funeral assistance request",
+    "eyebrow": "FUNERAL & BEREAVEMENT",
+    "lead": "Share your needs with our team. For immediate assistance, call (571) 444-3578.",
+    "image": "/assets/fb-remembrance-candles.jpg",
+    "position": "center 65%"
+  },
+  "consultation": {
+    "heading": "Consultation request",
+    "eyebrow": "PERSONAL GUIDANCE",
+    "lead": "Tell us what support you need and IAC will help with the next step.",
+    "image": "/assets/fb-quran-guidance.jpg",
+    "position": "center 75%"
+  },
+  "rent-a-hall": {
+    "heading": "Hall rental request",
+    "eyebrow": "GATHER AT IAC",
+    "lead": "Share your event plans and preferred hall with the Center.",
+    "image": "/assets/fb-community-tables.jpg",
+    "position": "center 55%"
+  },
+  "membership": {
+    "heading": "Membership request",
+    "eyebrow": "BELONG TO THE COMMUNITY",
+    "lead": "Join, renew, or ask about becoming a member of Imam Ali Center.",
+    "image": "/assets/fb-community-portrait.jpg",
+    "position": "center 55%"
+  },
+  "religious-question": {
+    "heading": "Ask a religious question",
+    "eyebrow": "FAITH & UNDERSTANDING",
+    "lead": "Send your question to IAC for religious guidance.",
+    "image": "/assets/fb-quran-guidance.jpg",
+    "position": "center 75%"
+  }
+}

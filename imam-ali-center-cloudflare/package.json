@@ -1,0 +1,1 @@
+{"name":"imam-ali-center-cloudflare","private":true,"type":"module","scripts":{"build":"node scripts/prepare.mjs"},"devDependencies":{"wrangler":"^4.151.1"}}

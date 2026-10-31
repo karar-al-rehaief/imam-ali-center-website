@@ -1,0 +1,8 @@
+{
+  "name": "imam-ali-center-core",
+  "private": true,
+  "scripts": {
+    "build": "node imam-ali-center-website/scripts/build-pages.mjs && node imam-ali-center-cloudflare/scripts/prepare.mjs",
+    "deploy": "node imam-ali-center-cloudflare/scripts/cloudflare.mjs deploy"
+  }
+}
